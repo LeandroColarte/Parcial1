@@ -1,0 +1,51 @@
+﻿@model List<Parcial1.Models.Form>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">AFIP</h1>
+</div>
+
+<div class = "card">
+    <div class="card-header">
+        <h5>Lista de formulario</h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-success btn-sm" asp-action="Formulario_Detalle" asp-controller="Home" asp-route-idForm="0">Crear Nuevo</a>
+        <hr />
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Cuit</th>
+                    <th>Razon Social</th>
+                    <th>Domicilio</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.oCategorium?.TiposCategoria</td>
+                        <td>@item.Cuit</td>
+                        <td>@item.RazonSocial</td>
+                        <td>@item.Domicilio</td>
+                        <td>@item.Email</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm " asp-action="Formulario_Detalle" asp-controller="Home" asp-route-idForm="@item.IdForm">Editar</a>
+                            <a class="btn btn-danger btn-sm " asp-action="Eliminar" asp-controller="Home" asp-route-idForm="@item.IdForm">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+</div>
